@@ -12,6 +12,16 @@ ul {
 h1 {
     padding: 35px;
 }
+.restartBtn {
+    padding: 14px 28px;
+	background-color: #2b5598;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
 /* MODAL CSS */
 #modal {
 	background-color: rgba(0,0,0,0.4);
@@ -26,7 +36,7 @@ h1 {
 }
 .modal-buttons {
 	padding: 14px 18px;
-	background-color: #677996;
+	background-color: #738aae;
 	border: none;
 	outline: none;
 	border-radius: 5px;
