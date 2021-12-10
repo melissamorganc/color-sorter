@@ -60,7 +60,7 @@ function init(numOfColors) {
 		boxes.push(createBox());
 	} //empty boxes
 }
-init(2);
+init(4);
 console.log(dots);
 console.log(boxes);
 
@@ -69,7 +69,7 @@ const restartBtn = document.querySelector('.restartBtn');
 restartBtn.addEventListener('click', init);
 console.log(restartBtn);
 
-//Bug - adds extra empty boxes
+//Bug - adds extra empty boxesc
 
 //amount of arrays that are created varies off of user input
 
@@ -168,7 +168,6 @@ function selectDot(lastDot) {
 // Assistance from Landon :)
 
 const toggleTheme = document.querySelector('.switch');
-console.log(toggleTheme);
 
 toggleTheme.addEventListener('click', darkTheme);
 
