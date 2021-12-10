@@ -12,18 +12,26 @@ let dotCount = 0;
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
 const dotDiv = document.createElement('div');
+const gameboard = document.querySelector('#gameboard');
 boxDiv.classList.add('container');
 dotDiv.classList.add('dot');
+
+gameboard.addEventListener('click', function (event) {
+	if (event.target.classList.contains('container')) {
+		console.log(event.target.firstElementChild);
+	}
+});
 
 //QUERY SELECTORS
 //mod operator
 
 // FUNCTIONS
 
-function createBox() {
+function createBox(i) {
 	const boxDiv = document.createElement('div');
 	boxDiv.classList.add('container');
-	document.getElementById('gameboard').appendChild(boxDiv);
+	boxDiv.setAttribute('id', i);
+	gameboard.appendChild(boxDiv);
 
 	return boxDiv;
 }
@@ -45,7 +53,7 @@ function createDot(box) {
 function init(numOfColors) {
 	//adding containers based off of the num of colors a user selects
 	for (let i = 0; i < numOfColors; i++) {
-		boxes.push(createBox());
+		boxes.push(createBox(i));
 		boxCount++;
 
 		//adding 4 dots for each container
@@ -56,8 +64,9 @@ function init(numOfColors) {
 			// console.log(dotsPerGroup);
 		}
 	}
-	for (let k = 0; k < 2; k++) {
-		boxes.push(createBox());
+	for (let k = 4; k < 6; k++) {
+		boxes.push(createBox(k));
+		boxCount++;
 	} //empty boxes
 }
 init(4);
@@ -66,8 +75,9 @@ console.log(boxes);
 
 //RESTART BUTTON
 const restartBtn = document.querySelector('.restartBtn');
-restartBtn.addEventListener('click', init);
-console.log(restartBtn);
+restartBtn.addEventListener('click', function () {
+	document.location.reload(true);
+});
 
 //Bug - adds extra empty boxesc
 
@@ -92,49 +102,51 @@ close.addEventListener('click', closeModal);
 // setTimeout(openModal, 2000);
 
 //SHUFFLE FUNCTIONALITY
+//////// CONSOLE LOG TESTS
+// const lastDot = document.getElementsByClassName('dot');
+// console.log(lastDot);
+// console.log(gameboard);
+// console.log(lastDot[0]);
 
-const lastDot = document.getElementsByClassName('dot');
-console.log(lastDot);
-console.log(gameboard);
-console.log(lastDot[0]);
-
-console.log(boxes);
-console.log(boxDiv);
+// console.log(boxes);
+// console.log(boxDiv);
 
 // THIS IS WHAT I DID TO BE ABLE TO SELECT ALL THE BOXES
 
-let clickAllBoxes = function () {
-	let attribute = boxes.getAttribute('data-myattribute');
-	console.log(attribute);
-};
-for (let i = 0; i < boxes.length; i++) {
-	boxes[i].addEventListener('click', function () {
-		console.log('you clicked the container');
-		dots.pop([i][dots.length - 1]);
-	});
-}
-console.log(boxes);
+// let clickAllBoxes = function () {
+// 	let attribute = boxes.getAttribute('data-myattribute');
+// 	console.log(attribute);
+// };
+// for (let i = 0; i < boxes.length; i++) {
+// 	boxes[i].addEventListener('click', function () {
+// 		console.log('you clicked the container');
+// 		dots.pop([i][dots.length - 1]);
+// 	});
+// }
+// console.log(boxes);
 
 // 10:12 PM: THIS ONE SELECTED THE DOTS BUT RETURNED A NULL VALUE
 // 10:28 PM: I can now select every dot
-const dotTest = document.querySelectorAll('.dot');
-const dotTestArr = [...dotTest];
-console.log(dotTestArr);
+// const dotTest = document.querySelectorAll('.dot');
+// const dotTestArr = [...dotTest];
+// console.log(dotTestArr);
 
-dotTestArr.forEach((element) =>
-	element.addEventListener('click', (event) => {
-		// dotTest.setAttribute('style', 'border: 1px solid black')
-		//cannot set attribute...
-		// document.dotTestArr[0].style.borderColor = "red";
-		console.log([...dotTest].indexOf(dotTest));
-		// - this returns "-1" for every dot
-	})
-);
+// dotTest.forEach((element) =>
+// 	element.addEventListener('click', (event) => {
+// 		element.setAttribute('style', 'border: 1px solid black')
+// 		//cannot set attribute...
+// 		// document.body.style.backgroundColor = "red";
+
+// 		// console.log(element.indexOf());
+// 		// - this returns "-1" for every dot
+// 	})
+// );
 
 // let clickAllDots = function() {
 // 	let dotAttribute = dots[i].getAttribute("data-mydotattribute");
 // 	console.log(dotAttribute);
 // }
+// console.log(clickAllDots)
 // for (let i = 0; i < dots.length; i++) {
 // 	dots.addEventListener('click', function() {
 // 		console.log('you clickd the dot')
@@ -160,9 +172,9 @@ function moveDots(box) {
 	lastDot.push(box);
 	box.append(box);
 }
-function selectDot(lastDot) {
-	lastDot[0].style.border = 'black';
-}
+// function selectDot(lastDot) {
+// 	lastDot[0].style.border = 'black';
+// }
 
 // Light and Dark Background
 // Assistance from Landon :)
