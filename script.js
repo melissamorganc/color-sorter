@@ -60,9 +60,9 @@ function init(numOfColors) {
 		boxes.push(createBox());
 	} //empty boxes
 }
-init(1);
+init(2);
 console.log(dots);
-console.log(boxes)
+console.log(boxes);
 
 //RESTART BUTTON
 const restartBtn = document.querySelector('.restartBtn');
@@ -98,31 +98,38 @@ console.log(lastDot);
 console.log(gameboard);
 console.log(lastDot[0]);
 
-console.log(boxes)
-console.log(boxDiv)
+console.log(boxes);
+console.log(boxDiv);
 
 // THIS IS WHAT I DID TO BE ABLE TO SELECT ALL THE BOXES
 
-let clickAllBoxes = function() {
-	let attribute = boxes.getAttribute("data-myattribute");
+let clickAllBoxes = function () {
+	let attribute = boxes.getAttribute('data-myattribute');
 	console.log(attribute);
-}
+};
 for (let i = 0; i < boxes.length; i++) {
-
 	boxes[i].addEventListener('click', function () {
 		console.log('you clicked the container');
-		dots.pop([i][dots.length - 1])
-	})
-};
-console.log(boxes)
+		dots.pop([i][dots.length - 1]);
+	});
+}
+console.log(boxes);
 
-// THIS ONE DID NOT WORK
+// 10:12 PM: THIS ONE SELECTED THE DOTS BUT RETURNED A NULL VALUE
+// 10:28 PM: I can now select every dot
 const dotTest = document.querySelectorAll('.dot');
-console.log(dotTest);
+const dotTestArr = [...dotTest];
+console.log(dotTestArr);
 
-dotTest.forEach(element => element.addEventListener('click', event => {
-	console.log(event.target.getAttribute("data-element"))
-}))
+dotTestArr.forEach((element) =>
+	element.addEventListener('click', (event) => {
+		// dotTest.setAttribute('style', 'border: 1px solid black')
+		//cannot set attribute...
+		// document.dotTestArr[0].style.borderColor = "red";
+		console.log([...dotTest].indexOf(dotTest));
+		// - this returns "-1" for every dot
+	})
+);
 
 // let clickAllDots = function() {
 // 	let dotAttribute = dots[i].getAttribute("data-mydotattribute");
@@ -155,4 +162,21 @@ function moveDots(box) {
 }
 function selectDot(lastDot) {
 	lastDot[0].style.border = 'black';
+}
+
+// Light and Dark Background
+// Assistance from Landon :)
+
+const toggleTheme = document.querySelector('.switch');
+console.log(toggleTheme);
+
+toggleTheme.addEventListener('click', darkTheme);
+
+function darkTheme() {
+	let theme = document.getElementById('theme');
+	if (theme.getAttribute('href') == `./css/style.css`) {
+		theme.setAttribute('href', `./css/dark.css`);
+	} else {
+		theme.setAttribute('href', `./css/style.css`);
+	}
 }

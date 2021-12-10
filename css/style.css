@@ -99,3 +99,15 @@ h2 {
     /* align-content: center; does nothing*/
 	cursor: pointer;
 }
+
+
+.switch {
+	padding: 14px 28px;
+	background-color: #2b5598;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}

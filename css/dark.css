@@ -1,0 +1,111 @@
+body {
+    text-align: center;
+    background-color: rgb(11, 31, 31);
+    height: 50vh;
+}
+ul {
+    list-style-type: none;
+}
+.lvlSelect {
+    color: red;
+}
+h1 {
+    padding: 35px;
+}
+.restartBtn {
+    padding: 14px 28px;
+	background-color: #2b5598;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
+/* MODAL CSS */
+#modal {
+	background-color: rgba(0,0,0,0.4);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 1;
+	overflow: auto;
+	display: none;
+}
+.modal-buttons {
+	padding: 14px 18px;
+	background-color: #738aae;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
+#modal-textbox {
+	background-color: white;
+	height: 350px;
+	width: 550px;
+	border-radius: 2px;
+	margin: 150px auto;
+	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+	padding: 2%;
+	line-height: 120%;
+	font: Arial;
+}
+#modal-footer {
+	text-align: right;
+}
+h2 {
+	padding-bottom: 15px;
+	text-align: center;
+}
+
+/* DOTS  https://www.w3schools.com/howto/howto_css_circles.asp */
+.dot {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: flex;
+    flex-flow: row;
+    cursor: pointer;
+    padding: .75rem;
+    margin-bottom: 1rem;
+}
+#gameboard {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.container {
+    height: 250px;
+    width: 50px;
+	border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    border-left: 5px solid black;
+	border-radius: 10px;
+	padding: .25em;
+	margin: 1em;
+	display: flex;
+    /* flex-wrap: wrap; does nothing rn */
+    /* flex-direction: row; does nothing rn */
+    /* direction of dots */
+    flex-flow: column; 
+    justify-content: space-evenly;
+    /* align-content: center; does nothing*/
+	cursor: pointer;
+}
+.switch {
+	padding: 14px 28px;
+	background-color: #2b5598;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	color: white;
+	font-family: 'Arial';
+	cursor: pointer;
+}
