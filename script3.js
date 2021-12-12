@@ -3,8 +3,8 @@ const COLORS_ = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
 // VARIABLES
 let boxes = [];
-let dots = [[], [], [], [], [], [], []];
-let colors = ['red', 'yellow', 'green', 'blue', 'purple'];
+let dots = [[], [], [], [], [], [], [], []];
+let colors = ['red', 'yellow', 'green', 'blue', 'purple', 'orange'];
 let colorsAmount = [...colors, ...colors, ...colors, ...colors]; //needs to be number of colors set for the round
 let boxCount = 0;
 let dotCount = 0;
@@ -139,7 +139,7 @@ function init(numOfColors) {
 		boxCount++;
 	} //empty boxes
 }
-init(5);
+init(6);
 console.log(dots);
 console.log(boxes);
 
@@ -255,5 +255,3 @@ function darkTheme() {
 		theme.setAttribute('href', `./css/style.css`);
 	}
 }
-
-
