@@ -5,9 +5,11 @@ const COLORS_ = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 let boxes = [];
 let dots = [[], [], [], [], [], []];
 let colors = ['red', 'yellow', 'green', 'blue'];
-let colorsAmount = [...colors, ...colors]; //needs to be number of colors set for the round
+let colorsAmount = [...colors, ...colors, ...colors, ...colors]; //needs to be number of colors set for the round
 let boxCount = 0;
 let dotCount = 0;
+let currentDot;
+// let newArray = fisherYates(colorsAmount);
 
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
@@ -16,11 +18,58 @@ const gameboard = document.querySelector('#gameboard');
 boxDiv.classList.add('container');
 dotDiv.classList.add('dot');
 
+//if no dot is grabbed use grabadot, if not, move dot when clicked
+//grab a dot function
 gameboard.addEventListener('click', function (event) {
-	if (event.target.classList.contains('container')) {
-		console.log(event.target.firstElementChild);
+	// event.preventDefault();
+	if (!currentDot) {
+		if (event.target.classList.contains('container')) {
+			currentDot = event.target.firstElementChild;
+			// currentDot.setAttribute('style', 'border: 1px solid black')
+			console.log(currentDot);
+		} else if (event.target.classList.contains('dot')) {
+			currentDot = event.target.parentNode.firstElementChild;
+			currentDot.classList.add('grabbed');
+
+			console.log(currentDot);
+		}
+	} else if (currentDot && event.target.classList.contains('container')) {
+		currentDot.remove(); // remove it from the dom on second click
+		event.target.prepend(currentDot);
+		currentDot = null;
 	}
 });
+
+//inside event listener, before check to see if a dot is already clicked
+/////save it as the current dot. remove it from the dom. move it somewhere else
+// have an event listener on each box. IF there is a dot; if the box is full, dont do anything
+// if a dot is empty, dont do anything
+//append current dot to the box you clicked on
+// set the current dot to false/null once move has happened
+
+// gameboard.addEventListener('click', grabDot)
+
+// function grabDot(event){
+// 	if (event.target.classList.contains('container')) {
+// 		currentDot = event.target.firstElementChild;
+// 		// currentDot.style.borderColor = 'Purple';
+// 		console.log(currentDot);
+// 	} else if (event.target.classList.contains('dot')) {
+// 		currentDot = event.target.parentNode.firstElementChild;
+// 		console.log(currentDot);
+// 	}
+
+// };
+
+// function moveDots() {
+// 	if ()
+
+// 	(currentDot != null){
+// 		grabDot();
+// 	}
+// }
+
+///
 
 //QUERY SELECTORS
 //mod operator
@@ -36,19 +85,47 @@ function createBox(i) {
 	return boxDiv;
 }
 
+function fisherYates(array) {
+	var count = array.length,
+		randomnumber,
+		temp;
+	while (count) {
+		randomnumber = (Math.random() * count--) | 0;
+		temp = array[count];
+		array[count] = array[randomnumber];
+		array[randomnumber] = temp;
+	}
+	return array;
+}
+console.log(fisherYates(colorsAmount));
+let newArray = fisherYates(colorsAmount);
+
+
+// function createDot(box) {
+// 	const dotDiv = document.createElement('div');
+// 	dotDiv.classList.add('dot');
+// 	dotDiv.style.backgroundColor =
+// 		colorsAmount[Math.floor(Math.random() * colorsAmount.length)];
+// 	box.appendChild(dotDiv);
+// 	return dotDiv;
+// }
+
 function createDot(box) {
 	const dotDiv = document.createElement('div');
 	dotDiv.classList.add('dot');
-	dotDiv.style.backgroundColor =
-		colorsAmount[Math.floor(Math.random() * colorsAmount.length)];
-	// dotDiv.addEventListener// click and move functionality
+	dotDiv.style.backgroundColor = newArray[0];
+	newArray.shift(1)
 	box.appendChild(dotDiv);
 	return dotDiv;
 }
+
+
 //try to pick up each dot and its array position
 // function addColorsToArray() {
 
 // }
+
+
 
 function init(numOfColors) {
 	//adding containers based off of the num of colors a user selects
@@ -59,9 +136,6 @@ function init(numOfColors) {
 		//adding 4 dots for each container
 		for (let j = 0; j < 4; j++) {
 			dots[i].push(createDot(boxes[boxCount - 1]));
-			// const dotsPerGroup = dots.length / numOfColors;
-			// // numOfColors.map(('', i) => dots.slice(i * dotsPerGroup, (i + 1) * dotsPerGroup));
-			// console.log(dotsPerGroup);
 		}
 	}
 	for (let k = 4; k < 6; k++) {
@@ -166,12 +240,6 @@ close.addEventListener('click', closeModal);
 // Next, the user will click the container they wish to move the dot to
 // Once moved to new container, border will chance back to normal
 
-function moveDots(box) {
-	const lastDot = box.lastElementChild;
-	lastDot.pop(box);
-	lastDot.push(box);
-	box.append(box);
-}
 // function selectDot(lastDot) {
 // 	lastDot[0].style.border = 'black';
 // }
