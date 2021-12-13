@@ -6,7 +6,7 @@ let colorsAmount = [...colors, ...colors, ...colors, ...colors]; //needs to be n
 let boxCount = 0;
 let dotCount = 0;
 let currentDot;
-// let newArray = fisherYates(colorsAmount);
+const plopSound = new Audio('plop.mp3');
 
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
@@ -30,6 +30,7 @@ gameboard.addEventListener('click', function (event) {
 		}
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
+		plopSound.play();
 		currentDot.style.border = 'none';
 		event.target.prepend(currentDot);
 		currentDot = null;

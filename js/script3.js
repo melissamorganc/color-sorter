@@ -6,6 +6,7 @@ let colorsAmount = [...colors, ...colors, ...colors, ...colors]; //needs to be n
 let boxCount = 0;
 let dotCount = 0;
 let currentDot;
+const plopSound = new Audio('plop.mp3');
 
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
@@ -30,6 +31,7 @@ gameboard.addEventListener('click', function (event) {
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
 		currentDot.style.border = 'none';
+		plopSound.play();
 		event.target.prepend(currentDot);
 		currentDot = null;
 	}

@@ -7,6 +7,7 @@ let boxCount = 0;
 let dotCount = 0;
 let currentDot;
 let userInput;
+const plopSound = new Audio('plop.mp3');
 
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
@@ -33,6 +34,8 @@ gameboard.addEventListener('click', function (event) {
 		}
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
+		//https://mixkit.co/free-sound-effects/discover/plop/
+		plopSound.play();
 		currentDot.style.border = 'none';
 		//add it to new target
 		event.target.prepend(currentDot);
