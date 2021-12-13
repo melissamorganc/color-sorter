@@ -18,15 +18,19 @@ dotDiv.classList.add('dot');
 
 
 
-//if no dot is grabbed use first if statement, if so, move dot on second click
+//add the event listener to the gameboard so it can hear all the clicks accross the board. Ref - Julio
 gameboard.addEventListener('click', function (event) {
 	event.preventDefault();
+	//if no dot is grabbed use first if statement, if so, move dot on second click
 	if (!currentDot) {
+		//inside event listener, before check to see if a dot is already clicked
 		if (event.target.classList.contains('container')) {
+			//save it as the current dot
 			currentDot = event.target.firstElementChild;
 			currentDot.style.border = '2px solid black';
 			console.log(currentDot);
 		} else if (event.target.classList.contains('dot')) {
+			//so user can click the container or dot
 			currentDot = event.target.parentNode.firstElementChild;
 			currentDot.classList.add('grabbed');
 			currentDot.style.border = '2px solid black';
@@ -35,23 +39,18 @@ gameboard.addEventListener('click', function (event) {
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
 		currentDot.style.border = 'none';
+		//add it to new target
 		event.target.prepend(currentDot);
-		
+		//deselect current dot
 		currentDot = null;
 	}
 });
-
-//inside event listener, before check to see if a dot is already clicked
-/////save it as the current dot. remove it from the dom. move it somewhere else
-// have an event listener on each box. IF there is a dot; if the box is full, dont do anything
-// if a dot is empty, dont do anything
-//append current dot to the box you clicked on
-// set the current dot to false/null once move has happened
 
 
 
 // FUNCTIONS
 
+//create a box
 function createBox(i) {
 	const boxDiv = document.createElement('div');
 	boxDiv.classList.add('container');
@@ -61,6 +60,7 @@ function createBox(i) {
 	return boxDiv;
 }
 
+//shuffle the colors - https://bost.ocks.org/mike/shuffle/
 function fisherYates(array) {
 	var count = array.length,
 		randomnumber,
@@ -73,22 +73,24 @@ function fisherYates(array) {
 	}
 	return array;
 }
-console.log(fisherYates(colorsAmount));
+//set a new array to call the appropriate amound of each color randomly
 let newArray = fisherYates(colorsAmount);
 
-
+//create dot function
 function createDot(box) {
 	const dotDiv = document.createElement('div');
 	dotDiv.classList.add('dot');
+	//call array to choose random color
 	dotDiv.style.backgroundColor = newArray[0];
+	//shift to move to next set of colors (this happens until you create all the dots in the init function and covers all the ones listed in the array)
 	newArray.shift(1)
 	box.appendChild(dotDiv);
 	return dotDiv;
 }
 
-
+//game initialization
 function init(numOfColors) {
-	//adding containers based off of the num of colors a user selects
+	//add the number of containers for the level (stretch goal, will be user selected instead of multiple sheets. GA Dots game referenced on how to switch between JS and HTML files)
 	for (let i = 0; i < numOfColors; i++) {
 		boxes.push(createBox(i));
 		boxCount++;
@@ -98,16 +100,17 @@ function init(numOfColors) {
 			dots[i].push(createDot(boxes[boxCount - 1]));
 		}
 	}
+	//create 2 empty dots
 	for (let k = 4; k < 6; k++) {
 		boxes.push(createBox(k));
 		boxCount++;
-	} //empty boxes
+	}
 }
 init(4);
-console.log(dots);
-console.log(boxes);
+
 
 //RESTART BUTTON
+//https://stackoverflow.com/questions/30347724/refresh-page-with-reset-button
 const restartBtn = document.querySelector('.restartBtn');
 restartBtn.addEventListener('click', function () {
 	document.location.reload(true);
@@ -130,10 +133,8 @@ const closeModal = () => {
 openBtn.addEventListener('click', openModal);
 close.addEventListener('click', closeModal);
 
-// setTimeout(openModal, 2000);
+setTimeout(openModal, 2400);
 
-
-//Notes - https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class
 
 // Light and Dark Background
 // Assistance from Landon :)

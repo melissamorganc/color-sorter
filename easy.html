@@ -13,15 +13,17 @@
 
 <body>
 
-
-    <!-- <button class="lvlSelect">Number of Colors</button> -->
-
     <!-- MODAL SECTION -->
     <button class="modal-buttons" id="openModal">How to Play</button>
     <div id="modal">
         <div id="modal-textbox">
             <h2>Learn to Play Color Sorter</h2>
-            <p></p>
+            <ul>
+                <li>Tap any tube to select the ball lying on top. Then click the new tube you want to move it to.</li>
+                <!-- <li>You can only move a ball on top of another ball if both of them have the same color and the tube does not already have 4 balls.</li> -->
+                <li>Stack all the balls with the same color into a single tube.</li>
+                <li>You can change the amount of colors you want to sort by selecting the difficulty at the bottom of the page.</li>
+            </ul>
             <div id="modal-footer">
                 <button class="modal-buttons" id="close" href="#">Close</button>
             </div>
@@ -35,12 +37,13 @@
     <div id="gameboard">
 
     </div>
-    <a href='easy.html'>Easy</a>
-    <a href='medium.html'>Medium</a>
-    <a href='hard.html'>Hard</a>
+    <div class="difficuly">
+        <a href='easy.html'>Easy</a>
+        <a href='medium.html'>Medium</a>
+        <a href='hard.html'>Hard</a>
+    </div>
     <script src="./js/script.js"></script>
-    <!-- <script src="./js/script2.js"></script>
-    <script src="./js/script3.js"></script> -->
+
 </body>
 
 </html>
