@@ -1,6 +1,3 @@
-// CONSTANTS
-const COLORS_ = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
-
 // VARIABLES
 let boxes = [];
 let dots = [[], [], [], [], [], [], []];
@@ -26,13 +23,10 @@ gameboard.addEventListener('click', function (event) {
 		if (event.target.classList.contains('container')) {
 			currentDot = event.target.firstElementChild;
 			currentDot.style.border = '2px solid black';
-			console.log(currentDot);
 		} else if (event.target.classList.contains('dot')) {
 			currentDot = event.target.parentNode.firstElementChild;
 			currentDot.style.border = '2px solid black';
 			currentDot.classList.add('grabbed');
-
-			console.log(currentDot);
 		}
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
@@ -41,40 +35,6 @@ gameboard.addEventListener('click', function (event) {
 		currentDot = null;
 	}
 });
-
-//inside event listener, before check to see if a dot is already clicked
-/////save it as the current dot. remove it from the dom. move it somewhere else
-// have an event listener on each box. IF there is a dot; if the box is full, dont do anything
-// if a dot is empty, dont do anything
-//append current dot to the box you clicked on
-// set the current dot to false/null once move has happened
-
-// gameboard.addEventListener('click', grabDot)
-
-// function grabDot(event){
-// 	if (event.target.classList.contains('container')) {
-// 		currentDot = event.target.firstElementChild;
-// 		// currentDot.style.borderColor = 'Purple';
-// 		console.log(currentDot);
-// 	} else if (event.target.classList.contains('dot')) {
-// 		currentDot = event.target.parentNode.firstElementChild;
-// 		console.log(currentDot);
-// 	}
-
-// };
-
-// function moveDots() {
-// 	if ()
-
-// 	(currentDot != null){
-// 		grabDot();
-// 	}
-// }
-
-///
-
-//QUERY SELECTORS
-//mod operator
 
 // FUNCTIONS
 
@@ -99,17 +59,7 @@ function fisherYates(array) {
 	}
 	return array;
 }
-console.log(fisherYates(colorsAmount));
 let newArray = fisherYates(colorsAmount);
-
-// function createDot(box) {
-// 	const dotDiv = document.createElement('div');
-// 	dotDiv.classList.add('dot');
-// 	dotDiv.style.backgroundColor =
-// 		colorsAmount[Math.floor(Math.random() * colorsAmount.length)];
-// 	box.appendChild(dotDiv);
-// 	return dotDiv;
-// }
 
 function createDot(box) {
 	const dotDiv = document.createElement('div');
@@ -119,11 +69,6 @@ function createDot(box) {
 	box.appendChild(dotDiv);
 	return dotDiv;
 }
-
-//try to pick up each dot and its array position
-// function addColorsToArray() {
-
-// }
 
 function init(numOfColors) {
 	//adding containers based off of the num of colors a user selects
@@ -142,18 +87,12 @@ function init(numOfColors) {
 	} //empty boxes
 }
 init(5);
-console.log(dots);
-console.log(boxes);
 
 //RESTART BUTTON
 const restartBtn = document.querySelector('.restartBtn');
 restartBtn.addEventListener('click', function () {
 	document.location.reload(true);
 });
-
-//Bug - adds extra empty boxesc
-
-//amount of arrays that are created varies off of user input
 
 // MODAL - HOW TO PLAY FUNCTIONS
 
@@ -173,75 +112,6 @@ close.addEventListener('click', closeModal);
 
 // setTimeout(openModal, 2000);
 
-//SHUFFLE FUNCTIONALITY
-//////// CONSOLE LOG TESTS
-// const lastDot = document.getElementsByClassName('dot');
-// console.log(lastDot);
-// console.log(gameboard);
-// console.log(lastDot[0]);
-
-// console.log(boxes);
-// console.log(boxDiv);
-
-// THIS IS WHAT I DID TO BE ABLE TO SELECT ALL THE BOXES
-
-// let clickAllBoxes = function () {
-// 	let attribute = boxes.getAttribute('data-myattribute');
-// 	console.log(attribute);
-// };
-// for (let i = 0; i < boxes.length; i++) {
-// 	boxes[i].addEventListener('click', function () {
-// 		console.log('you clicked the container');
-// 		dots.pop([i][dots.length - 1]);
-// 	});
-// }
-// console.log(boxes);
-
-// 10:12 PM: THIS ONE SELECTED THE DOTS BUT RETURNED A NULL VALUE
-// 10:28 PM: I can now select every dot
-// const dotTest = document.querySelectorAll('.dot');
-// const dotTestArr = [...dotTest];
-// console.log(dotTestArr);
-
-// dotTest.forEach((element) =>
-// 	element.addEventListener('click', (event) => {
-// 		element.setAttribute('style', 'border: 1px solid black')
-// 		//cannot set attribute...
-// 		// document.body.style.backgroundColor = "red";
-
-// 		// console.log(element.indexOf());
-// 		// - this returns "-1" for every dot
-// 	})
-// );
-
-// let clickAllDots = function() {
-// 	let dotAttribute = dots[i].getAttribute("data-mydotattribute");
-// 	console.log(dotAttribute);
-// }
-// console.log(clickAllDots)
-// for (let i = 0; i < dots.length; i++) {
-// 	dots.addEventListener('click', function() {
-// 		console.log('you clickd the dot')
-// 	})
-// }
-//Notes - https://stackoverflow.com/questions/19655189/javascript-click-event-listener-on-class
-
-// EVENT LISTENERS
-// lastDot[0].addEventListener('click', function () {
-// 	console.log('last dot clicked');
-// 	// lastDot.style.borderColor = 'black';
-// });
-//ERROR on changing colors
-
-// MOVING FUNCTIONALITY
-// On first click the border is changed to a new color.
-// Next, the user will click the container they wish to move the dot to
-// Once moved to new container, border will chance back to normal
-
-// function selectDot(lastDot) {
-// 	lastDot[0].style.border = 'black';
-// }
-
 // Light and Dark Background
 // Assistance from Landon :)
 
@@ -255,20 +125,5 @@ function darkTheme() {
 		theme.setAttribute('href', `./css/dark.css`);
 	} else {
 		theme.setAttribute('href', `./css/style.css`);
-	}
-}
-
-const toggleDifficulty = document.querySelector('.levelSwitch');
-
-toggleDifficulty.addEventListener('click', difficultyBtn);
-
-function difficultyBtn() {
-	let difficulty = document.getElementById('level');
-	if (difficulty.getAttribute('src' == `script.js`)) {
-		difficulty.setAttribute('src' == `script2.js`);
-	} else if (difficulty.getAttribute('src' == `script2.js`)) {
-		difficulty.setAttribute('src' == `script3.js`);
-	} else {
-		difficulty.setAttribute('src', `script.js`);
 	}
 }

@@ -1,17 +1,10 @@
-/* * {
-	border: 1px solid red;
-} */
 body {
 	text-align: center;
 	background-color: rgb(184, 233, 254);
-	/* height: 50vh; */
 	font-family: 'Amatic SC', cursive;
 }
 ul {
 	list-style-type: none;
-}
-.lvlSelect {
-	color: red;
 }
 h1 {
 	margin-top: 200px;

@@ -8,15 +8,12 @@ let dotCount = 0;
 let currentDot;
 let userInput;
 
-
 // ELEMENT CREATORS
 const boxDiv = document.createElement('div');
 const dotDiv = document.createElement('div');
 const gameboard = document.querySelector('#gameboard');
 boxDiv.classList.add('container');
 dotDiv.classList.add('dot');
-
-
 
 //add the event listener to the gameboard so it can hear all the clicks accross the board. Ref - Julio
 gameboard.addEventListener('click', function (event) {
@@ -28,13 +25,11 @@ gameboard.addEventListener('click', function (event) {
 			//save it as the current dot
 			currentDot = event.target.firstElementChild;
 			currentDot.style.border = '2px solid black';
-			console.log(currentDot);
 		} else if (event.target.classList.contains('dot')) {
 			//so user can click the container or dot
 			currentDot = event.target.parentNode.firstElementChild;
 			currentDot.classList.add('grabbed');
 			currentDot.style.border = '2px solid black';
-			console.log(currentDot);
 		}
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
@@ -45,8 +40,6 @@ gameboard.addEventListener('click', function (event) {
 		currentDot = null;
 	}
 });
-
-
 
 // FUNCTIONS
 
@@ -83,7 +76,7 @@ function createDot(box) {
 	//call array to choose random color
 	dotDiv.style.backgroundColor = newArray[0];
 	//shift to move to next set of colors (this happens until you create all the dots in the init function and covers all the ones listed in the array)
-	newArray.shift(1)
+	newArray.shift(1);
 	box.appendChild(dotDiv);
 	return dotDiv;
 }
@@ -108,14 +101,12 @@ function init(numOfColors) {
 }
 init(4);
 
-
 //RESTART BUTTON
 //https://stackoverflow.com/questions/30347724/refresh-page-with-reset-button
 const restartBtn = document.querySelector('.restartBtn');
 restartBtn.addEventListener('click', function () {
 	document.location.reload(true);
 });
-
 
 // MODAL - HOW TO PLAY FUNCTIONS
 
@@ -134,7 +125,6 @@ openBtn.addEventListener('click', openModal);
 close.addEventListener('click', closeModal);
 
 setTimeout(openModal, 2400);
-
 
 // Light and Dark Background
 // Assistance from Landon :)

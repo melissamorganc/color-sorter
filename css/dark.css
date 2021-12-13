@@ -2,14 +2,7 @@ body {
 	text-align: center;
 	background-color: rgb(12, 24, 86);
 	color: white;
-	/* height: 50vh; */
 	font-family: 'Amatic SC', cursive;
-}
-ul {
-	list-style-type: none;
-}
-.lvlSelect {
-	color: red;
 }
 h1 {
 	margin-top: 10px;
@@ -49,13 +42,15 @@ a {
 #modal-textbox {
 	background-color: white;
 	color: black;
-	height: 350px;
-	width: 550px;
-	border-radius: 2px;
-	margin: 150px auto;
+	height: 300px;
+	width: 430px;
+	border-radius: 40px;
+	margin: 100px auto;
 	box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-	padding: 2%;
+	padding: 4%;
 	line-height: 120%;
+	text-align: left;
+	font-size: larger;
 }
 #modal-footer {
 	text-align: right;

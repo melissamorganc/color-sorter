@@ -1,10 +1,6 @@
-/* * {
-	border: 1px solid red;
-} */
 body {
 	text-align: center;
 	background-color: rgb(184, 233, 254);
-	/* height: 50vh; */
 	font-family: 'Amatic SC', cursive;
 }
 h1 {
@@ -27,8 +23,6 @@ a {
 	outline: none;
 	cursor: pointer;
 }
-
-
 
 /* MODAL CSS */
 #modal {
@@ -80,7 +74,7 @@ h2 {
 	flex-direction: row;
 	justify-content: space-evenly;
 	flex-wrap: wrap;
-	margin-bottom: 10px
+	margin-bottom: 10px;
 }
 .container {
 	height: 220px;
