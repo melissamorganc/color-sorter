@@ -18,7 +18,8 @@ h1 {
 	font-weight: 700;
 }
 
-button, a {
+button,
+a {
 	background-color: rgb(81, 90, 136);
 	font-family: 'Amatic SC', cursive;
 	color: white;
