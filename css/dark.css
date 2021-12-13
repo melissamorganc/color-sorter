@@ -12,23 +12,23 @@ ul {
 	color: red;
 }
 h1 {
-	margin-top: 15px;
-	margin-bottom: 50px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 	font-size: 75px;
 	font-weight: 700;
 }
 
-button {
+button, a {
 	background-color: rgb(81, 90, 136);
 	font-family: 'Amatic SC', cursive;
 	color: white;
 	font-size: 30px;
-	margin: 0px 10px;
+	margin: 1px 8px;
 	font-weight: 700;
 	padding: 2px 10px;
 	border: none;
 	outline: none;
-	border-radius: 5px;
+	border-radius: 8px;
 	cursor: pointer;
 }
 

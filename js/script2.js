@@ -3,8 +3,8 @@ const COLORS_ = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
 // VARIABLES
 let boxes = [];
-let dots = [[], [], [], [], [], [], [], []];
-let colors = ['red', 'yellow', 'green', 'blue', 'purple', 'orange'];
+let dots = [[], [], [], [], [], [], []];
+let colors = ['red', 'yellow', 'green', 'blue', 'purple'];
 let colorsAmount = [...colors, ...colors, ...colors, ...colors]; //needs to be number of colors set for the round
 let boxCount = 0;
 let dotCount = 0;
@@ -25,16 +25,18 @@ gameboard.addEventListener('click', function (event) {
 	if (!currentDot) {
 		if (event.target.classList.contains('container')) {
 			currentDot = event.target.firstElementChild;
-			// currentDot.setAttribute('style', 'border: 1px solid black')
+			currentDot.style.border = '2px solid black';
 			console.log(currentDot);
 		} else if (event.target.classList.contains('dot')) {
 			currentDot = event.target.parentNode.firstElementChild;
+			currentDot.style.border = '2px solid black';
 			currentDot.classList.add('grabbed');
 
 			console.log(currentDot);
 		}
 	} else if (currentDot && event.target.classList.contains('container')) {
 		currentDot.remove(); // remove it from the dom on second click
+		currentDot.style.border = 'none';
 		event.target.prepend(currentDot);
 		currentDot = null;
 	}
@@ -139,7 +141,7 @@ function init(numOfColors) {
 		boxCount++;
 	} //empty boxes
 }
-init(6);
+init(5);
 console.log(dots);
 console.log(boxes);
 
@@ -253,5 +255,20 @@ function darkTheme() {
 		theme.setAttribute('href', `./css/dark.css`);
 	} else {
 		theme.setAttribute('href', `./css/style.css`);
+	}
+}
+
+const toggleDifficulty = document.querySelector('.levelSwitch');
+
+toggleDifficulty.addEventListener('click', difficultyBtn);
+
+function difficultyBtn() {
+	let difficulty = document.getElementById('level');
+	if (difficulty.getAttribute('src' == `script.js`)) {
+		difficulty.setAttribute('src' == `script2.js`);
+	} else if (difficulty.getAttribute('src' == `script2.js`)) {
+		difficulty.setAttribute('src' == `script3.js`);
+	} else {
+		difficulty.setAttribute('src', `script.js`);
 	}
 }
