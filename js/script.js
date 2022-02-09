@@ -127,7 +127,7 @@ const closeModal = () => {
 openBtn.addEventListener('click', openModal);
 close.addEventListener('click', closeModal);
 
-setTimeout(openModal, 2000);
+// setTimeout(openModal, 2000);
 
 // Light and Dark Background
 // Assistance from Landon :)

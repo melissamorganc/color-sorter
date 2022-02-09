@@ -52,6 +52,20 @@ a {
 #modal-footer {
 	text-align: right;
 }
+@media (max-width: 500px) {
+	#modal-textbox {
+		display: flex;
+		flex-direction: column;
+		word-wrap: normal;
+		width:auto;
+		height: auto;
+		margin: 20px;
+		padding: 5%;
+	}
+	h2 {
+		margin-top: 5%;
+	}
+}
 h2 {
 	padding-bottom: 15px;
 	text-align: center;

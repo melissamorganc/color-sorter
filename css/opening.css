@@ -57,7 +57,20 @@ h2 {
 	padding-bottom: 15px;
 	text-align: center;
 }
-
+@media (max-width: 500px) {
+	#modal-textbox {
+		display: flex;
+		flex-direction: column;
+		word-wrap: normal;
+		width:auto;
+		height: auto;
+		margin: 20px;
+		padding: 5%;
+	}
+	h2 {
+		margin-top: 5%;
+	}
+}
 /* DOTS  https://www.w3schools.com/howto/howto_css_circles.asp */
 .dot {
 	height: 20px;
